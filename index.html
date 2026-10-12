@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Video & Motion Portfolio — Eduardo Oviedo">
+  <title>Video & Motion Portfolio — Eduardo Oviedo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080808;
+      --fg: #f1f1f1;
+      --gutter: clamp(1rem, 4vw, 3.5rem);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--bg); scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Montserrat', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    main {
+      width: min(100%, 1800px);
+      margin-inline: auto;
+      padding: clamp(2rem, 7vw, 6rem) var(--gutter) clamp(2rem, 5vw, 4rem);
+    }
+
+    h1 {
+      margin: 0 0 clamp(2rem, 5vw, 4.5rem);
+      max-width: 1000px;
+      color: var(--fg);
+      font-size: clamp(1.65rem, 5.8vw, 4.8rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.065em;
+      overflow-wrap: anywhere;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: clamp(1rem, 2.2vw, 2rem);
+      align-items: start;
+    }
+
+    .video-item {
+      min-width: 0;
+      overflow: hidden;
+      background: #111;
+      border-radius: 2px;
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-item video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #111;
+    }
+
+    .video-item:focus-within {
+      outline: 1px solid rgba(241, 241, 241, 0.7);
+      outline-offset: 4px;
+    }
+
+    @media (min-width: 700px) {
+      .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .video-item:first-child { grid-column: 1 / -1; }
+    }
+
+    @media (min-width: 1200px) {
+      .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .video-item:first-child { grid-column: 1 / -1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Video &amp; Motion Portfolio — Eduardo Oviedo</h1>
+
+    <section class="video-grid" aria-label="Video and motion portfolio">
+      <div class="video-item">
+        <video controls playsinline preload="metadata" aria-label="Movonte promotional video">
+          <source src="https://raw.githubusercontent.com/edvardoviedo/recursos/main/PORTFOLIO_VIDEOS/movonte_promo_ok%20(1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls playsinline preload="metadata" aria-label="Unilever reel video">
+          <source src="https://raw.githubusercontent.com/edvardoviedo/recursos/main/PORTFOLIO_VIDEOS/Unilever_reel_Oviedo.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls playsinline preload="metadata" aria-label="Big Smile Studio video">
+          <source src="https://raw.githubusercontent.com/edvardoviedo/recursos/main/PORTFOLIO_VIDEOS/bigsmile_Studio.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls playsinline preload="metadata" aria-label="Conversa AI video">
+          <source src="https://raw.githubusercontent.com/edvardoviedo/recursos/main/PORTFOLIO_VIDEOS/CONVERSA_AI_OVIEDO.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-item">
+        <video controls playsinline preload="metadata" aria-label="Story video">
+          <source src="https://raw.githubusercontent.com/edvardoviedo/recursos/main/PORTFOLIO_VIDEOS/story.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Keep playback focused: pause other videos when a new one starts.
+    const videos = [...document.querySelectorAll('video')];
+    videos.forEach((video) => {
+      video.addEventListener('play', () => {
+        videos.forEach((other) => {
+          if (other !== video) other.pause();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
